@@ -15,13 +15,13 @@ except Exception:
 from pkg_resources import get_distribution, DistributionNotFound
 
 try:
-    __version__ = get_distribution('tisdb').py_version
+    __version__ = get_distribution("tisdb").py_version
 except DistributionNotFound:
     with io.open("src/tisdb/__init__.py", "rt", encoding="utf-8") as f:
         __version__ = re.search(r"__version__ = \"(.*?)\"", f.read()).group(1)
 
 reqs = [
-    'pyesl>=0.0.28a0',
+    "pyesl>=0.0.28a0",
 ]
 
 setup(
@@ -54,8 +54,11 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     install_requires=reqs,
-    # use_scm_version={'tag_regex': r'^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$',
-    #                  # '{next_version}.dev{distance}+{scm letter}{revision hash}.dYYYMMMDD',
-    #                  "fallback_version": __version__, "relative_to": __file__},
-    # setup_requires=['setuptools_scm'],
+    use_scm_version={
+        "tag_regex": r"^(?P<prefix>v)?(?P<version>[^\+]+)(?P<suffix>.*)?$",
+        # '{next_version}.dev{distance}+{scm letter}{revision hash}.dYYYMMMDD',
+        "fallback_version": __version__,
+        "relative_to": __file__,
+    },
+    setup_requires=["setuptools_scm"],
 )
