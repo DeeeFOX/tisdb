@@ -8,3 +8,4 @@ pip3 install sphinx-rtd-theme
 sphinx-apidoc -f -o pages/api src tests
 sphinx-build -b html pages pages/_build/html
 mv pages/_build/html/ docs/
+touch docs/.nojekyll
