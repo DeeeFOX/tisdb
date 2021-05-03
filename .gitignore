@@ -1,1 +1,10 @@
-/.DS_Store
+**/.DS_Store
+/.vscode
+/dist
+**/*.egg-info/
+**/__pycache__/
+/docs/_*
+/docs/api
+/docs/make.bat
+/docs/Makefile
+/public
