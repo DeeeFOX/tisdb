@@ -1,11 +1,11 @@
 # TiSDB
 
-A simple TSDB based on MySQL(or TIDB)
+A simple TSDB Project based on MySQL(or TIDB)
 
 ## Installation
 
 ```pip install tisdb```
 
-## Docs
+## Documents
 
-[User Guide](./tisdb/)
+[User Guide](https://deeefox.github.io/tisdb/)
