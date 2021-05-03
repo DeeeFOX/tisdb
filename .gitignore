@@ -3,7 +3,7 @@
 /dist
 **/*.egg-info/
 **/__pycache__/
-/docs/_*
-/docs/api
-/docs/make.bat
-/docs/Makefile
+/pages/_*
+/pages/api
+/pages/make.bat
+/pages/Makefile
