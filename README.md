@@ -1,6 +1,6 @@
 # TiSDB
 
-A simple TSDB Project based on MySQL(or TIDB)
+A simple TSDB project based on MySQL(or TIDB)
 
 ## Installation
 
