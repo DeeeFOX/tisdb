@@ -177,16 +177,31 @@
 <span id="tisdb-config-module"></span><h1>tisdb.config module<a class="headerlink" href="#module-tisdb.config" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="tisdb.config.TsdbConfig">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.config.</span></code><code class="sig-name descname"><span class="pre">TsdbConfig</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">host</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'localhost'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">int</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">3306</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">user</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'root'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">'root'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.config.TsdbConfig" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.config.</span></code><code class="sig-name descname"><span class="pre">TsdbConfig</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">host:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'localhost'</span></em>, <em class="sig-param"><span class="pre">port:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">3306</span></em>, <em class="sig-param"><span class="pre">user:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'root'</span></em>, <em class="sig-param"><span class="pre">password:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'root'</span></em>, <em class="sig-param"><span class="pre">db:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'icuser'</span></em>, <em class="sig-param"><span class="pre">charset:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'utf8'</span></em>, <em class="sig-param"><span class="pre">autocommit:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">cursorclass=&lt;class</span> <span class="pre">'pymysql.cursors.DictCursor'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.config.TsdbConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sortedcontainers.sorteddict.SortedDict</span></code></p>
 <p>Tsdb client config</p>
 <dl class="simple">
-<dt>Args:</dt><dd><p>host ([str]): connection host
-port ([int]): port
-user ([str]): auth user
-password ([str]): auth password</p>
+<dt>Args:</dt><dd><p>host (str): connection host
+port (int): port
+user (str): auth user
+password (str): auth password
+db (str): tsdb namespace
+charset (str): conn charset
+autocommit (int): auto commit or not. Defaults to 0 means no</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="tisdb.config.TsdbConfig.copy">
+<code class="sig-name descname"><span class="pre">copy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#tisdb.config.TsdbConfig" title="tisdb.config.TsdbConfig"><span class="pre">tisdb.config.TsdbConfig</span></a><a class="headerlink" href="#tisdb.config.TsdbConfig.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a shallow copy of the sorted dict.</p>
+<p>Runtime complexity: <cite>O(n)</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>new sorted dict</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 </div>

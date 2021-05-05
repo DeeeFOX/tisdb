@@ -177,7 +177,7 @@
 <span id="tisdb-client-module"></span><h1>tisdb.client module<a class="headerlink" href="#module-tisdb.client" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt id="tisdb.client.TsdbClient">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.client.</span></code><code class="sig-name descname"><span class="pre">TsdbClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">store_type:</span> <span class="pre">tisdb.types.StoreType</span> <span class="pre">=</span> <span class="pre">&lt;StoreType.PORM:</span> <span class="pre">1&gt;</span></em>, <em class="sig-param"><span class="pre">conn_conf:</span> <span class="pre">tisdb.config.TsdbConfig</span> <span class="pre">=</span> <span class="pre">{'host':</span> <span class="pre">'localhost'</span></em>, <em class="sig-param"><span class="pre">'password':</span> <span class="pre">'root'</span></em>, <em class="sig-param"><span class="pre">'port':</span> <span class="pre">3306</span></em>, <em class="sig-param"><span class="pre">'user':</span> <span class="pre">'root'}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.client.TsdbClient" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.client.</span></code><code class="sig-name descname"><span class="pre">TsdbClient</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">store_type:</span> <span class="pre">tisdb.types.StoreType</span> <span class="pre">=</span> <span class="pre">&lt;StoreType.PORM:</span> <span class="pre">1&gt;</span></em>, <em class="sig-param"><span class="pre">conn_conf:</span> <span class="pre">tisdb.config.TsdbConfig</span> <span class="pre">=</span> <span class="pre">{'autocommit':</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">'charset':</span> <span class="pre">'utf8'</span></em>, <em class="sig-param"><span class="pre">'cursorclass':</span> <span class="pre">&lt;class</span> <span class="pre">'pymysql.cursors.DictCursor'&gt;</span></em>, <em class="sig-param"><span class="pre">'db':</span> <span class="pre">'icuser'</span></em>, <em class="sig-param"><span class="pre">'host':</span> <span class="pre">'localhost'</span></em>, <em class="sig-param"><span class="pre">'password':</span> <span class="pre">'root'</span></em>, <em class="sig-param"><span class="pre">'port':</span> <span class="pre">3306</span></em>, <em class="sig-param"><span class="pre">'user':</span> <span class="pre">'root'}</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.client.TsdbClient" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Tsdb Client</p>
 <dl class="simple">
@@ -185,6 +185,20 @@
 conn_conf (TsdbConfig): Tsdb connecting configuration</p>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="tisdb.client.TsdbClient.create_tsdbdata_mydb">
+<code class="sig-name descname"><span class="pre">create_tsdbdata_mydb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn_conf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#tisdb.client.TsdbClient.create_tsdbdata_mydb" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create tsdbdata from mydb</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>sql (str): sql to excute that create ts data
+param (dict, optional): sql param. Defaults to None.
+conn_conf (dict, optional): connection config. Defaults to None.</p>
+</dd>
+<dt>Returns:</dt><dd><p>list[dict]: ts data created from sql</p>
+</dd>
+</dl>
+</dd></dl>
+
 <dl class="py method">
 <dt id="tisdb.client.TsdbClient.parse">
 <code class="sig-name descname"><span class="pre">parse</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="tisdb.model.html#tisdb.model.TsdbData" title="tisdb.model.TsdbData"><span class="pre">tisdb.model.TsdbData</span></a><a class="headerlink" href="#tisdb.client.TsdbClient.parse" title="Permalink to this definition">¶</a></dt>
@@ -198,8 +212,13 @@ conn_conf (TsdbConfig): Tsdb connecting configuration</p>
 </dd></dl>
 
 <dl class="py method">
+<dt id="tisdb.client.TsdbClient.parse_many">
+<code class="sig-name descname"><span class="pre">parse_many</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#tisdb.client.TsdbClient.parse_many" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
 <dt id="tisdb.client.TsdbClient.save">
-<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value:</span> <span class="pre">tisdb.model.TsdbData</span></em>, <em class="sig-param"><span class="pre">op_type:</span> <span class="pre">tisdb.types.OpType</span> <span class="pre">=</span> <span class="pre">&lt;OpType.INSERT_IGNORE:</span> <span class="pre">1&gt;</span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">tisdb.model.SaveResult</span><a class="headerlink" href="#tisdb.client.TsdbClient.save" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">save</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">value:</span> <span class="pre">tisdb.model.TsdbData</span></em>, <em class="sig-param"><span class="pre">op_type:</span> <span class="pre">tisdb.types.OpType</span> <span class="pre">=</span> <span class="pre">&lt;OpType.UPSERT:</span> <span class="pre">2&gt;</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="tisdb.model.html#tisdb.model.SaveResult" title="tisdb.model.SaveResult"><span class="pre">tisdb.model.SaveResult</span></a><a class="headerlink" href="#tisdb.client.TsdbClient.save" title="Permalink to this definition">¶</a></dt>
 <dd><p>Save timestamp data</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>value (TsdbData): Timestamp value to save
