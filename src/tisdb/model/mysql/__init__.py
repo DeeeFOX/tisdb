@@ -10,24 +10,29 @@ from porm.types.core import (
 )
 import pymysql
 
+from tisdb.config import TsdbConfig
+
 __all__ = (
     "Mtsv",
     "Tkv",
     "TkvUkRel",
 )
 
+TSDB_CONFIG = TsdbConfig(
+    host="localhost",
+    port=3306,
+    user="root",
+    password="root",
+    db="icuser",
+    charset="utf8",
+    autocommit=0,
+    cursorclass=pymysql.cursors.DictCursor,
+)
+
 
 class TsdbModel(DBModel):
-    __DATABASE__ = "icuser"
-    __CONFIG__ = {
-        "host": "localhost",
-        "user": "root",
-        "password": "root",
-        "db": "icuser",
-        "charset": "utf8",
-        "autocommit": 0,  # default 0
-        "cursorclass": pymysql.cursors.DictCursor,
-    }
+    __DATABASE__ = TSDB_CONFIG["db"]
+    __CONFIG__ = TSDB_CONFIG
 
 
 class Mtsv(TsdbModel):

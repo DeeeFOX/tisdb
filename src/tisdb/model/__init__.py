@@ -7,7 +7,7 @@ import json
 
 from tisdb.errors import BaseInfo
 
-__all__ = ("TsdbData",)
+__all__ = ("TsdbData", "TsdbTags", "TsdbFields", "SaveResult")
 
 
 class TsdbTags(SortedDict):
@@ -39,7 +39,9 @@ class TsdbData(object):
     ):
         super().__init__()
         self._metric = metric
-        self._ts = ts
+        self._ts = datetime.strptime(
+            ts.strftime("%Y-%m-%d %H:%M:%S"), "%Y-%m-%d %H:%M:%S"
+        )
         self._tags = tags
         uuid_gen = md5()
         uuid_gen.update(json.dumps(tags).encode(encoding="utf-8"))
