@@ -8,14 +8,15 @@ class BaseInfo(object):
         object ([type]): [description]
     """
 
-    SUBCODE = 10200
-    STATUS = u"ok"
+    SUBCODE: int = 10200
+    STATUS: str = u"ok"
 
     def __init__(self, message="", subcode=SUBCODE, status=STATUS, **kwargs):
         super().__init__()
         self.status = status or self.STATUS
         self.subcode = subcode or self.SUBCODE
         self.info = kwargs.get("info", {})
+        self.info["message"] = message
 
 
 class BaseError(Exception):

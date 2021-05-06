@@ -87,15 +87,12 @@ class SaveResult(object):
     """
 
     def __init__(
-        self,
-        data: list[TsdbData],
-        subcode: int = BaseInfo.SUBCODE,
-        status: str = BaseInfo.STATUS,
+        self, data: list[TsdbData], subcode: int = None, status: str = None
     ) -> None:
         super().__init__()
         self._data = data
-        self._subcode = BaseInfo.SUBCODE
-        self._status = BaseInfo.STATUS
+        self._subcode = subcode or BaseInfo.SUBCODE
+        self._status = status or BaseInfo.STATUS
 
     @property
     def data(self):
