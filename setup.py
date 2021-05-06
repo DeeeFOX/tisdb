@@ -20,9 +20,7 @@ except DistributionNotFound:
     with io.open("src/tisdb/__init__.py", "rt", encoding="utf-8") as f:
         __version__ = re.search(r"__version__ = \"(.*?)\"", f.read()).group(1)
 
-reqs = [
-    "pyesl>=0.0.28a0",
-]
+reqs = ["porm>=0.0.28a0", "sortedcontainers>=2.3.0"]
 
 setup(
     name="tisdb",
