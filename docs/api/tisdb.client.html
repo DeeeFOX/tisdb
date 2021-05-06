@@ -187,14 +187,14 @@ conn_conf (TsdbConfig): Tsdb connecting configuration</p>
 </dl>
 <dl class="py method">
 <dt id="tisdb.client.TsdbClient.create_tsdbdata_mydb">
-<code class="sig-name descname"><span class="pre">create_tsdbdata_mydb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn_conf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#tisdb.client.TsdbClient.create_tsdbdata_mydb" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">create_tsdbdata_mydb</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sql</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">param</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conn_conf</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span> <span class="o"><span class="pre">=</span></span> <span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#tisdb.client.TsdbClient.create_tsdbdata_mydb" title="Permalink to this definition">¶</a></dt>
 <dd><p>Create tsdbdata from mydb</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>sql (str): sql to excute that create ts data
 param (dict, optional): sql param. Defaults to None.
 conn_conf (dict, optional): connection config. Defaults to None.</p>
 </dd>
-<dt>Returns:</dt><dd><p>list[dict]: ts data created from sql</p>
+<dt>Returns:</dt><dd><p>List[Dict]: ts data created from sql</p>
 </dd>
 </dl>
 </dd></dl>
@@ -213,7 +213,7 @@ conn_conf (dict, optional): connection config. Defaults to None.</p>
 
 <dl class="py method">
 <dt id="tisdb.client.TsdbClient.parse_many">
-<code class="sig-name descname"><span class="pre">parse_many</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">list</span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">list</span><a class="headerlink" href="#tisdb.client.TsdbClient.parse_many" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">parse_many</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="tisdb.model.html#tisdb.model.TsdbData" title="tisdb.model.TsdbData"><span class="pre">tisdb.model.TsdbData</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#tisdb.client.TsdbClient.parse_many" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">

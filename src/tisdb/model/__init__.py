@@ -1,5 +1,6 @@
 # -*- coding; utf-8
 
+from typing import List
 from sortedcontainers import SortedDict
 from datetime import datetime
 from hashlib import md5
@@ -81,13 +82,13 @@ class SaveResult(object):
     """Result of the save function
 
     Args:
-        data (list[TsdbData]): Tsdb data to save this time
+        data (List[TsdbData]): Tsdb data to save this time
         subcode (int): return subcode of this save result
         status (str): status of this save result
     """
 
     def __init__(
-        self, data: list[TsdbData], subcode: int = None, status: str = None
+        self, data: List[TsdbData], subcode: int = None, status: str = None
     ) -> None:
         super().__init__()
         self._data = data

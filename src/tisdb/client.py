@@ -3,6 +3,7 @@
 
 from copy import deepcopy
 from datetime import datetime, date
+from typing import Dict, List
 
 from sortedcontainers.sorteddict import SortedDict
 from tisdb.api import TsdbApi
@@ -82,7 +83,7 @@ class TsdbClient(object):
             ),
         )
 
-    def parse_many(self, values: list[dict]) -> list[TsdbData]:
+    def parse_many(self, values: List[Dict]) -> List[TsdbData]:
         ret = []
         for val in values:
             ret.append(self.parse(val))
@@ -90,7 +91,7 @@ class TsdbClient(object):
 
     def create_tsdbdata_mydb(
         self, sql: str, param: dict = None, conn_conf: dict = None
-    ) -> list[dict]:
+    ) -> List[Dict]:
         """Create tsdbdata from mydb
 
         Args:
@@ -99,7 +100,7 @@ class TsdbClient(object):
             conn_conf (dict, optional): connection config. Defaults to None.
 
         Returns:
-            list[dict]: ts data created from sql
+            List[Dict]: ts data created from sql
         """
         conf = TSDB_CONFIG.copy()
         if conn_conf is not None:
