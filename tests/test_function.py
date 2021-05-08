@@ -45,6 +45,16 @@ class TsdbTest(TsdbTestCase):
             )
         )
         self.assertNotEqual(res.data[0], -1)
+        res = self.tsdb._parse_mydb_result(
+            {
+                "metric": "zzf_test",
+                "ts": "2021-04-01T01:01:01+08:00",
+                "tag_gameid": "zzf",
+                "tag_channel": "haha",
+                "fieldvalue_yoyokaka": 1,
+            }
+        )
+        self.assertEqual(res["metric"], "zzf_test_yoyokaka")
 
     def test_03_create_and_save(self):
         sql_str = """

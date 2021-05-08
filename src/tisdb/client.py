@@ -126,6 +126,7 @@ class TsdbClient(object):
         ts_data = SortedDict()
         ts_tag = SortedDict()
         ts_data["tag"] = ts_tag
+        _metric_sub = None
         for key, val in result.items():
             if "metric" == key:
                 ts_data[key] = val
@@ -137,6 +138,11 @@ class TsdbClient(object):
                 ts_data[key] = val
             elif "value" == key:
                 ts_data[key] = val
+            elif key.startswith("fieldvalue"):
+                ts_data["value"] = val
+                _metric_sub = key.split("_", 1)[-1]
             else:
                 raise ParamError("Error key: " + key)
+        if _metric_sub is not None:
+            ts_data["metric"] = "{}_{}".format(ts_data["metric"], _metric_sub)
         return ts_data
