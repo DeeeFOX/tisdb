@@ -52,9 +52,11 @@ class TsdbTest(TsdbTestCase):
                 "tag_gameid": "zzf",
                 "tag_channel": "haha",
                 "fieldvalue_yoyokaka": 1,
+                "fieldvalue_kakayoyo": 1,
             }
         )
-        self.assertEqual(res["metric"], "zzf_test_yoyokaka")
+        self.assertEqual(res[0]["metric"], "zzf_test_yoyokaka")
+        self.assertEqual(res[1]["metric"], "zzf_test_kakayoyo")
 
     def test_03_create_and_save(self):
         sql_str = """

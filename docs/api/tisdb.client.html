@@ -213,8 +213,15 @@ conn_conf (dict, optional): connection config. Defaults to None.</p>
 
 <dl class="py method">
 <dt id="tisdb.client.TsdbClient.parse_many">
-<code class="sig-name descname"><span class="pre">parse_many</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="tisdb.model.html#tisdb.model.TsdbData" title="tisdb.model.TsdbData"><span class="pre">tisdb.model.TsdbData</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#tisdb.client.TsdbClient.parse_many" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="sig-name descname"><span class="pre">parse_many</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">values</span></span><span class="p"><span class="pre">:</span></span> <span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">dict</span><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> &#x2192; <span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="tisdb.model.html#tisdb.model.TsdbData" title="tisdb.model.TsdbData"><span class="pre">tisdb.model.TsdbData</span></a><span class="p"><span class="pre">]</span></span><a class="headerlink" href="#tisdb.client.TsdbClient.parse_many" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse many tsdb data from list</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>values (List[dict]): Tsdb data presents in dict type</p>
+</dd>
+<dt>Returns:</dt><dd><p>List[TsdbData]: parsed tsdb data list</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt id="tisdb.client.TsdbClient.save">

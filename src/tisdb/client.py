@@ -56,6 +56,20 @@ class TsdbClient(object):
 
         return SaveResult(data=[ret])
 
+    def parse_many(self, values: List[dict]) -> List[TsdbData]:
+        """Parse many tsdb data from list
+
+        Args:
+            values (List[dict]): Tsdb data presents in dict type
+
+        Returns:
+            List[TsdbData]: parsed tsdb data list
+        """
+        ret = []
+        for val in values:
+            ret.append(self.parse(val))
+        return ret
+
     def parse(self, value: dict) -> TsdbData:
         """Parse tsdb data from dictionary
 
@@ -83,12 +97,6 @@ class TsdbClient(object):
             ),
         )
 
-    def parse_many(self, values: List[Dict]) -> List[TsdbData]:
-        ret = []
-        for val in values:
-            ret.append(self.parse(val))
-        return ret
-
     def create_tsdbdata_mydb(
         self, sql: str, param: dict = None, conn_conf: dict = None
     ) -> List[Dict]:
@@ -108,10 +116,10 @@ class TsdbClient(object):
         mydb = MyDBApi(database_name=conf.get("db", None), **conf)
         ret = []
         for res in mydb.query_many(sql, param=param):
-            ret.append(self._parse_mydb_result(res))
+            ret.extend(self._parse_mydb_result(res))
         return ret
 
-    def _parse_mydb_result(self, result: dict) -> dict:
+    def _parse_mydb_result(self, result: dict) -> List[Dict]:
         """Parse mydb query result to tsdb dict like format
 
         Args:
@@ -121,28 +129,42 @@ class TsdbClient(object):
             ParamError: Error when missing key needed or meeting key undefined
 
         Returns:
-            dict: Tsdb dict format data
+            List[Dict]: Tsdb dict format data
         """
-        ts_data = SortedDict()
         ts_tag = SortedDict()
-        ts_data["tag"] = ts_tag
-        _metric_sub = None
+        _metric_prefix = None
+        _metric_sufix_value = {}
+        _value = None
+        _ts = None
         for key, val in result.items():
             if "metric" == key:
-                ts_data[key] = val
+                _metric_prefix = val
             elif key.startswith("tag"):
                 # select 'm' as metric, 'g18' as tag_gameid, 'ntes' as tag_channel
                 # 中抽取tag_后的字段作为tsvals的tag key
                 ts_tag[key.split("_", 1)[1]] = val
             elif "ts" == key:
-                ts_data[key] = val
+                _ts = val
             elif "value" == key:
-                ts_data[key] = val
+                _value = val
             elif key.startswith("fieldvalue"):
-                ts_data["value"] = val
                 _metric_sub = key.split("_", 1)[-1]
+                _metric_sufix_value[_metric_sub] = val
             else:
                 raise ParamError("Error key: " + key)
-        if _metric_sub is not None:
-            ts_data["metric"] = "{}_{}".format(ts_data["metric"], _metric_sub)
-        return ts_data
+        ret = []
+        if len(_metric_sufix_value) > 0:
+            for metric_sufix, value in _metric_sufix_value.items():
+                ret.append(
+                    {
+                        "metric": "{}_{}".format(_metric_prefix, metric_sufix),
+                        "tag": ts_tag,
+                        "ts": _ts,
+                        "value": value,
+                    }
+                )
+        else:
+            ret.append(
+                {"metric": _metric_prefix, "tag": ts_tag, "ts": _ts, "value": _value}
+            )
+        return ret
