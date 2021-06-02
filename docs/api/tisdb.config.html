@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -176,8 +179,8 @@
   <div class="section" id="module-tisdb.config">
 <span id="tisdb-config-module"></span><h1>tisdb.config module<a class="headerlink" href="#module-tisdb.config" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
-<dt id="tisdb.config.TsdbConfig">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.config.</span></code><code class="sig-name descname"><span class="pre">TsdbConfig</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">host:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'localhost'</span></em>, <em class="sig-param"><span class="pre">port:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">3306</span></em>, <em class="sig-param"><span class="pre">user:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'root'</span></em>, <em class="sig-param"><span class="pre">password:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'root'</span></em>, <em class="sig-param"><span class="pre">db:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'icuser'</span></em>, <em class="sig-param"><span class="pre">charset:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'utf8'</span></em>, <em class="sig-param"><span class="pre">autocommit:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">cursorclass=&lt;class</span> <span class="pre">'pymysql.cursors.DictCursor'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.config.TsdbConfig" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.config.TsdbConfig">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tisdb.config.</span></span><span class="sig-name descname"><span class="pre">TsdbConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">host:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'localhost'</span></em>, <em class="sig-param"><span class="pre">port:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">3306</span></em>, <em class="sig-param"><span class="pre">user:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'root'</span></em>, <em class="sig-param"><span class="pre">password:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'root'</span></em>, <em class="sig-param"><span class="pre">db:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'icuser'</span></em>, <em class="sig-param"><span class="pre">charset:</span> <span class="pre">str</span> <span class="pre">=</span> <span class="pre">'utf8'</span></em>, <em class="sig-param"><span class="pre">autocommit:</span> <span class="pre">int</span> <span class="pre">=</span> <span class="pre">0</span></em>, <em class="sig-param"><span class="pre">cursorclass=&lt;class</span> <span class="pre">'pymysql.cursors.DictCursor'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.config.TsdbConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">sortedcontainers.sorteddict.SortedDict</span></code></p>
 <p>Tsdb client config</p>
 <dl class="simple">
@@ -191,8 +194,8 @@ autocommit (int): auto commit or not. Defaults to 0 means no</p>
 </dd>
 </dl>
 <dl class="py method">
-<dt id="tisdb.config.TsdbConfig.copy">
-<code class="sig-name descname"><span class="pre">copy</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#tisdb.config.TsdbConfig" title="tisdb.config.TsdbConfig"><span class="pre">tisdb.config.TsdbConfig</span></a><a class="headerlink" href="#tisdb.config.TsdbConfig.copy" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.config.TsdbConfig.copy">
+<span class="sig-name descname"><span class="pre">copy</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#tisdb.config.TsdbConfig" title="tisdb.config.TsdbConfig"><span class="pre">tisdb.config.TsdbConfig</span></a><a class="headerlink" href="#tisdb.config.TsdbConfig.copy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a shallow copy of the sorted dict.</p>
 <p>Runtime complexity: <cite>O(n)</cite></p>
 <dl class="field-list simple">

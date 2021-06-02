@@ -75,3 +75,23 @@ class TsdbTest(TsdbTestCase):
         ):
             res = self.tsdb.save(tsdb_data)
             self.assertNotEqual(res.data[0], -1)
+
+    def test_04_create_and_batchsave(self):
+        sql_str = """
+        SELECT 'zzf_test2' as metric, DATE(ts) as ts, 'zzf2' as tag_ggid, 'zzf2' as tag_ch, count(1) as value
+        FROM test.mtsv2
+        WHERE
+            ts > %(starttime)s and ts < %(endtime)s
+        GROUP BY DATE(ts)
+        """
+        res = self.tsdb.save_many(
+            self.tsdb.parse_many(
+                self.tsdb.create_tsdbdata_mydb(
+                    sql_str,
+                    param={"starttime": "2021-03-22", "endtime": "2021-06-30"},
+                    conn_conf={"db": "test"},
+                )
+            )
+        )
+        for _d in res.data:
+            self.assertNotEqual(_d, -1)

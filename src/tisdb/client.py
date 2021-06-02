@@ -56,6 +56,30 @@ class TsdbClient(object):
 
         return SaveResult(data=[ret])
 
+    def save_many(
+        self, value: List[TsdbData], op_type: OpType = OpType.UPSERT
+    ) -> SaveResult:
+        """Save timestamp data in batch
+
+        Args:
+            value (List[TsdbData]): Timestamp value to save in batch
+            op_type (OpType, optional): Saving operation type. Defaults to OpType.INSERT_IGNORE.
+
+        Returns:
+            List[SaveResult]:  Result of this save in batch
+        """
+        if op_type == OpType.INSERT_IGNORE:
+            ret = self.api.insert_ignore_batch(value)
+        elif op_type == OpType.UPSERT:
+            ret = self.api.upsert_batch(value)
+        elif op_type == OpType.INSERT_ON_DUPLICATE_KEY_UPDATE:
+            # ret = self.api.insert_on_duplicate_key_update(value)
+            pass
+        else:
+            ret = self.api.insert_ignore_batch(value)
+
+        return SaveResult(data=ret)
+
     def parse_many(self, values: List[dict]) -> List[TsdbData]:
         """Parse many tsdb data from list
 

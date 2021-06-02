@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
@@ -205,7 +208,7 @@
 <h2 id="D">D</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/tisdb.model.html#tisdb.model.SaveResult.data">data() (tisdb.model.SaveResult property)</a>
+      <li><a href="api/tisdb.model.html#tisdb.model.SaveResult.data">data (tisdb.model.SaveResult property)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -231,9 +234,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/tisdb.types.html#tisdb.types.OpType.INSERT_IGNORE">INSERT_IGNORE (tisdb.types.OpType attribute)</a>
 </li>
+      <li><a href="api/tisdb.api.html#tisdb.api.TsdbApi.insert_ignore">insert_ignore() (tisdb.api.TsdbApi method)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/tisdb.api.html#tisdb.api.TsdbApi.insert_ignore">insert_ignore() (tisdb.api.TsdbApi method)</a>
+      <li><a href="api/tisdb.api.html#tisdb.api.TsdbApi.insert_ignore_batch">insert_ignore_batch() (tisdb.api.TsdbApi method)</a>
 </li>
       <li><a href="api/tisdb.types.html#tisdb.types.OpType.INSERT_ON_DUPLICATE_KEY_UPDATE">INSERT_ON_DUPLICATE_KEY_UPDATE (tisdb.types.OpType attribute)</a>
 </li>
@@ -243,7 +248,7 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.metric">metric() (tisdb.model.TsdbData property)</a>
+      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.metric">metric (tisdb.model.TsdbData property)</a>
 </li>
       <li>
     module
@@ -304,6 +309,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/tisdb.client.html#tisdb.client.TsdbClient.save">save() (tisdb.client.TsdbClient method)</a>
 </li>
+      <li><a href="api/tisdb.client.html#tisdb.client.TsdbClient.save_many">save_many() (tisdb.client.TsdbClient method)</a>
+</li>
       <li><a href="api/tisdb.model.html#tisdb.model.SaveResult">SaveResult (class in tisdb.model)</a>
 </li>
       <li><a href="api/tisdb.errors.html#tisdb.errors.BaseError.STATUS">STATUS (tisdb.errors.BaseError attribute)</a>
@@ -336,9 +343,9 @@
 <h2 id="T">T</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.tags">tags() (tisdb.model.TsdbData property)</a>
+      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.tags">tags (tisdb.model.TsdbData property)</a>
 </li>
-      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.tags_uuid">tags_uuid() (tisdb.model.TsdbData property)</a>
+      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.tags_uuid">tags_uuid (tisdb.model.TsdbData property)</a>
 </li>
       <li><a href="api/tisdb.types.html#tisdb.types.StoreType.TIDB">TIDB (tisdb.types.StoreType attribute)</a>
 </li>
@@ -404,7 +411,7 @@
 </li>
       <li><a href="api/tisdb.model.mysql.html#tisdb.model.mysql.TkvUkRel">TkvUkRel (class in tisdb.model.mysql)</a>
 </li>
-      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.ts">ts() (tisdb.model.TsdbData property)</a>
+      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.ts">ts (tisdb.model.TsdbData property)</a>
 </li>
       <li><a href="api/tisdb.api.html#tisdb.api.TsdbApi">TsdbApi (class in tisdb.api)</a>
 </li>
@@ -430,13 +437,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/tisdb.api.html#tisdb.api.TsdbApi.upsert">upsert() (tisdb.api.TsdbApi method)</a>
 </li>
+      <li><a href="api/tisdb.api.html#tisdb.api.TsdbApi.upsert_batch">upsert_batch() (tisdb.api.TsdbApi method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.value_id">value_id() (tisdb.model.TsdbData property)</a>
+      <li><a href="api/tisdb.model.html#tisdb.model.TsdbData.value_id">value_id (tisdb.model.TsdbData property)</a>
 </li>
   </ul></td>
 </tr></table>

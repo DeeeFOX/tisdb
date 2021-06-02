@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
 
   
   
@@ -29,6 +31,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -176,8 +179,8 @@
   <div class="section" id="module-tisdb.errors">
 <span id="tisdb-errors-module"></span><h1>tisdb.errors module<a class="headerlink" href="#module-tisdb.errors" title="Permalink to this headline">¶</a></h1>
 <dl class="py exception">
-<dt id="tisdb.errors.BaseError">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.errors.</span></code><code class="sig-name descname"><span class="pre">BaseError</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10501</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TISDB</span> <span class="pre">Error'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.errors.BaseError" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.BaseError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">tisdb.errors.</span></span><span class="sig-name descname"><span class="pre">BaseError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10501</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TISDB</span> <span class="pre">Error'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.errors.BaseError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
 <p>Raised when a error occur.</p>
 <dl class="simple">
@@ -185,20 +188,20 @@
 </dd>
 </dl>
 <dl class="py attribute">
-<dt id="tisdb.errors.BaseError.STATUS">
-<code class="sig-name descname"><span class="pre">STATUS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'TISDB</span> <span class="pre">Error'</span></em><a class="headerlink" href="#tisdb.errors.BaseError.STATUS" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.BaseError.STATUS">
+<span class="sig-name descname"><span class="pre">STATUS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'TISDB</span> <span class="pre">Error'</span></em><a class="headerlink" href="#tisdb.errors.BaseError.STATUS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="tisdb.errors.BaseError.SUBCODE">
-<code class="sig-name descname"><span class="pre">SUBCODE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">10501</span></em><a class="headerlink" href="#tisdb.errors.BaseError.SUBCODE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.BaseError.SUBCODE">
+<span class="sig-name descname"><span class="pre">SUBCODE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10501</span></em><a class="headerlink" href="#tisdb.errors.BaseError.SUBCODE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py class">
-<dt id="tisdb.errors.BaseInfo">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.errors.</span></code><code class="sig-name descname"><span class="pre">BaseInfo</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ok'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.errors.BaseInfo" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.BaseInfo">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">tisdb.errors.</span></span><span class="sig-name descname"><span class="pre">BaseInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10200</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ok'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.errors.BaseInfo" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Returning result info</p>
 <dl class="simple">
@@ -206,47 +209,47 @@
 </dd>
 </dl>
 <dl class="py attribute">
-<dt id="tisdb.errors.BaseInfo.STATUS">
-<code class="sig-name descname"><span class="pre">STATUS</span></code><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><em class="property"> <span class="pre">=</span> <span class="pre">'ok'</span></em><a class="headerlink" href="#tisdb.errors.BaseInfo.STATUS" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.BaseInfo.STATUS">
+<span class="sig-name descname"><span class="pre">STATUS</span></span><em class="property"><span class="pre">:</span> <span class="pre">str</span></em><em class="property"> <span class="pre">=</span> <span class="pre">'ok'</span></em><a class="headerlink" href="#tisdb.errors.BaseInfo.STATUS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="tisdb.errors.BaseInfo.SUBCODE">
-<code class="sig-name descname"><span class="pre">SUBCODE</span></code><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">10200</span></em><a class="headerlink" href="#tisdb.errors.BaseInfo.SUBCODE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.BaseInfo.SUBCODE">
+<span class="sig-name descname"><span class="pre">SUBCODE</span></span><em class="property"><span class="pre">:</span> <span class="pre">int</span></em><em class="property"> <span class="pre">=</span> <span class="pre">10200</span></em><a class="headerlink" href="#tisdb.errors.BaseInfo.SUBCODE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py exception">
-<dt id="tisdb.errors.FakeError">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.errors.</span></code><code class="sig-name descname"><span class="pre">FakeError</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10501</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TISDB</span> <span class="pre">Error'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.errors.FakeError" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.FakeError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">tisdb.errors.</span></span><span class="sig-name descname"><span class="pre">FakeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10501</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TISDB</span> <span class="pre">Error'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.errors.FakeError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tisdb.errors.BaseError" title="tisdb.errors.BaseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">tisdb.errors.BaseError</span></code></a></p>
 <p>Fake error for some situation to step in error handler</p>
 <dl class="py attribute">
-<dt id="tisdb.errors.FakeError.STATUS">
-<code class="sig-name descname"><span class="pre">STATUS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'TISDB</span> <span class="pre">Fake</span> <span class="pre">Error'</span></em><a class="headerlink" href="#tisdb.errors.FakeError.STATUS" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.FakeError.STATUS">
+<span class="sig-name descname"><span class="pre">STATUS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'TISDB</span> <span class="pre">Fake</span> <span class="pre">Error'</span></em><a class="headerlink" href="#tisdb.errors.FakeError.STATUS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="tisdb.errors.FakeError.SUBCODE">
-<code class="sig-name descname"><span class="pre">SUBCODE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">10209</span></em><a class="headerlink" href="#tisdb.errors.FakeError.SUBCODE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.FakeError.SUBCODE">
+<span class="sig-name descname"><span class="pre">SUBCODE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10209</span></em><a class="headerlink" href="#tisdb.errors.FakeError.SUBCODE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
 
 <dl class="py exception">
-<dt id="tisdb.errors.ParamError">
-<em class="property"><span class="pre">exception</span> </em><code class="sig-prename descclassname"><span class="pre">tisdb.errors.</span></code><code class="sig-name descname"><span class="pre">ParamError</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10501</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TISDB</span> <span class="pre">Error'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.errors.ParamError" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.ParamError">
+<em class="property"><span class="pre">exception</span> </em><span class="sig-prename descclassname"><span class="pre">tisdb.errors.</span></span><span class="sig-name descname"><span class="pre">ParamError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">subcode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10501</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'TISDB</span> <span class="pre">Error'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tisdb.errors.ParamError" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#tisdb.errors.BaseError" title="tisdb.errors.BaseError"><code class="xref py py-class docutils literal notranslate"><span class="pre">tisdb.errors.BaseError</span></code></a></p>
 <p>Params error</p>
 <dl class="py attribute">
-<dt id="tisdb.errors.ParamError.STATUS">
-<code class="sig-name descname"><span class="pre">STATUS</span></code><em class="property"> <span class="pre">=</span> <span class="pre">'TISDB</span> <span class="pre">Invalid</span> <span class="pre">Parameter</span> <span class="pre">Error'</span></em><a class="headerlink" href="#tisdb.errors.ParamError.STATUS" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.ParamError.STATUS">
+<span class="sig-name descname"><span class="pre">STATUS</span></span><em class="property"> <span class="pre">=</span> <span class="pre">'TISDB</span> <span class="pre">Invalid</span> <span class="pre">Parameter</span> <span class="pre">Error'</span></em><a class="headerlink" href="#tisdb.errors.ParamError.STATUS" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="tisdb.errors.ParamError.SUBCODE">
-<code class="sig-name descname"><span class="pre">SUBCODE</span></code><em class="property"> <span class="pre">=</span> <span class="pre">10422</span></em><a class="headerlink" href="#tisdb.errors.ParamError.SUBCODE" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="tisdb.errors.ParamError.SUBCODE">
+<span class="sig-name descname"><span class="pre">SUBCODE</span></span><em class="property"> <span class="pre">=</span> <span class="pre">10422</span></em><a class="headerlink" href="#tisdb.errors.ParamError.SUBCODE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </dd></dl>
