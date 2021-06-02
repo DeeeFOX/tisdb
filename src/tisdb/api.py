@@ -86,8 +86,9 @@ class TsdbApi(object):
         Returns:
             List[TsdbData]: tsdb data that newly inserted with pkid
         """
-        mtsvmap = defaultdict(dict)
+        mtsvmaps = defaultdict(lambda: defaultdict(dict))
         for _v in value:
+            mtsvmap = mtsvmaps[_v.metric]
             if "mtsv" not in mtsvmap[_v.tags_uuid]:
                 mtsvmap[_v.tags_uuid]["mtsv"] = []
                 mtsvmap[_v.tags_uuid]["tsdb"] = []
@@ -113,16 +114,17 @@ class TsdbApi(object):
                 mtsvmap[_v.tags_uuid]["delete_terms"]["ts"][0].add(_v.ts)
         rets = []
         with list(mtsvmap.values())[0]["mtsv"][0].start_transaction() as _t:
-            for tags_uuid, mtsvtagkv in mtsvmap.items():
-                if upsert:
-                    Mtsv.delete_many(_t, **mtsvtagkv["delete_terms"])
-                idx = 0
-                for ret in self._insert_tsdbdata_batch(
-                    tags_uuid, mtsvtagkv["mtsv"], mtsvtagkv["tagkv"], _t
-                ):
-                    mtsvtagkv["tsdb"][idx].value_id = ret.zzid
-                    rets.append(mtsvtagkv["tsdb"][idx])
-                    idx += 1
+            for mtsvmap in mtsvmaps.values():
+                for tags_uuid, mtsvtagkv in mtsvmap.items():
+                    if upsert:
+                        Mtsv.delete_many(t=_t, **mtsvtagkv["delete_terms"])
+                    idx = 0
+                    for ret in self._insert_tsdbdata_batch(
+                        tags_uuid, mtsvtagkv["mtsv"], mtsvtagkv["tagkv"], _t
+                    ):
+                        mtsvtagkv["tsdb"][idx].value_id = ret.zzid
+                        rets.append(mtsvtagkv["tsdb"][idx])
+                        idx += 1
         return rets
 
     def _insert_tsdbdata_batch(
