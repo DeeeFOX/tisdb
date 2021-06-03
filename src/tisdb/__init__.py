@@ -10,4 +10,4 @@ development that inherited and learned from TIDB and OpenTSDB.
 # flake8: noqa
 
 
-__version__ = "0.0.4beta1"
+__version__ = "0.0.4beta2"

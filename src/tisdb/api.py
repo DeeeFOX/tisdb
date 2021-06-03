@@ -113,7 +113,8 @@ class TsdbApi(object):
             if upsert:
                 mtsvmap[_v.tags_uuid]["delete_terms"]["ts"][0].add(_v.ts)
         rets = []
-        with list(mtsvmap.values())[0]["mtsv"][0].start_transaction() as _t:
+        _mtsv_obj = list(list(mtsvmaps.values())[0].values())["mtsv"][0]
+        with _mtsv_obj.start_transaction() as _t:
             for mtsvmap in mtsvmaps.values():
                 for tags_uuid, mtsvtagkv in mtsvmap.items():
                     if upsert:
