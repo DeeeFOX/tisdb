@@ -86,6 +86,8 @@ class TsdbApi(object):
         Returns:
             List[TsdbData]: tsdb data that newly inserted with pkid
         """
+        if len(value) == 0:
+            return []
         mtsvmaps = defaultdict(lambda: defaultdict(dict))
         for _v in value:
             mtsvmap = mtsvmaps[_v.metric]
