@@ -4,6 +4,7 @@ from contextlib import contextmanager
 
 from tests.context import logger, QueryLogHandler, db_loader
 from tisdb.client import TsdbClient
+from tisdb.client2 import MetricdbClient
 
 
 class BaseTestCase(unittest.TestCase):
@@ -58,3 +59,16 @@ class TsdbTestCase(BaseTestCase):
 
     def tearDown(self):
         super(TsdbTestCase, self).tearDown()
+
+
+class MetricdbTestCase(BaseTestCase):
+    def setUp(self):
+        super(MetricdbTestCase, self).setUp()
+        self.metricdb: MetricdbClient = db_loader(
+            "porm", 
+            client='METRICDB',
+            user="root", password="root", host="localhost", port=3306
+        )
+
+    def tearDown(self):
+        super(MetricdbTestCase, self).tearDown()

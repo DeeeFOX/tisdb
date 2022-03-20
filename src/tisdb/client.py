@@ -32,7 +32,7 @@ class TsdbClient(object):
         self.store_type = store_type
         self.config = conn_conf
         self.api = TsdbApi(self.store_type, self.config)
-        self.api.activate()
+        # self.api.activate()
 
     def save(self, value: TsdbData, op_type: OpType = OpType.UPSERT) -> SaveResult:
         """Save timestamp data
@@ -89,12 +89,9 @@ class TsdbClient(object):
         Returns:
             List[TsdbData]: parsed tsdb data list
         """
-        ret = []
-        for val in values:
-            ret.append(self.parse(val))
-        return ret
+        return [self.parse(val) for val in values]
 
-    def parse(self, value: dict) -> TsdbData:
+    def parse(self, value: Dict[str, object]) -> TsdbData:
         """Parse tsdb data from dictionary
 
         Args:
@@ -117,9 +114,24 @@ class TsdbClient(object):
             ts=ts,
             tags=TsdbTags(**value.get("tag", {})),
             fields=TsdbFields(
-                value=value.get("field", {}).get("value", value.get("value", 0))
+                value=value.get("field", {}).get(
+                    "value", value.get("value", 0))
             ),
         )
+
+    def _create_mydb(self, conn_conf: dict = None) -> MyDBApi:
+        """Create api from mydb
+
+        Args:
+            conn_conf (dict, optional): connection config. Defaults to None.
+
+        Returns:
+            MyDBApi: mydb api of given connection configuration
+        """
+        conf = TSDB_CONFIG.copy()
+        if conn_conf is not None:
+            conf.update(conn_conf)
+        return MyDBApi(database_name=conf.get("db", None), **conf)
 
     def create_tsdbdata_mydb(
         self, sql: str, param: dict = None, conn_conf: dict = None
@@ -134,10 +146,7 @@ class TsdbClient(object):
         Returns:
             List[Dict]: ts data created from sql
         """
-        conf = TSDB_CONFIG.copy()
-        if conn_conf is not None:
-            conf.update(conn_conf)
-        mydb = MyDBApi(database_name=conf.get("db", None), **conf)
+        mydb = self._create_mydb(conn_conf=conn_conf)
         ret = []
         for res in mydb.query_many(sql, param=param):
             ret.extend(self._parse_mydb_result(res))
@@ -161,32 +170,33 @@ class TsdbClient(object):
         _value = None
         _ts = None
         for key, val in result.items():
-            if "metric" == key:
+            if key == "metric":
                 _metric_prefix = val
             elif key.startswith("tag"):
                 # select 'm' as metric, 'g18' as tag_gameid, 'ntes' as tag_channel
                 # 中抽取tag_后的字段作为tsvals的tag key
                 ts_tag[key.split("_", 1)[1]] = val
-            elif "ts" == key:
+            elif key == "ts":
                 _ts = val
-            elif "value" == key:
+            elif key == "value":
                 _value = val
             elif key.startswith("fieldvalue"):
                 _metric_sub = key.split("_", 1)[-1]
                 _metric_sufix_value[_metric_sub] = val
             else:
-                raise ParamError("Error key: " + key)
+                raise ParamError(f"Error key: {key}")
         ret = []
-        if len(_metric_sufix_value) > 0:
-            for metric_sufix, value in _metric_sufix_value.items():
-                ret.append(
-                    {
-                        "metric": "{}_{}".format(_metric_prefix, metric_sufix),
-                        "tag": ts_tag,
-                        "ts": _ts,
-                        "value": value,
-                    }
-                )
+        if _metric_sufix_value:
+            ret.extend(
+                {
+                    "metric": f"{_metric_prefix}_{metric_sufix}",
+                    "tag": ts_tag,
+                    "ts": _ts,
+                    "value": value,
+                }
+                for metric_sufix, value in _metric_sufix_value.items()
+            )
+
         else:
             ret.append(
                 {"metric": _metric_prefix, "tag": ts_tag, "ts": _ts, "value": _value}

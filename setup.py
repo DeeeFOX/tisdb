@@ -1,3 +1,4 @@
+from pkg_resources import get_distribution, DistributionNotFound
 import re
 import io
 
@@ -6,13 +7,19 @@ from setuptools import setup, find_packages
 from os import path
 
 this_directory = path.abspath(path.dirname(__file__))
-try:
-    with io.open(path.join(this_directory, "README.md"), "rt", encoding="utf-8") as fd:
-        readme = fd.read()
-except Exception:
-    readme = ""
 
-from pkg_resources import get_distribution, DistributionNotFound
+
+def _read_home_file(filename):
+    try:
+        with io.open(path.join(this_directory, filename), "rt", encoding="utf-8") as fd:
+            ret = fd.read()
+    except Exception:
+        ret = ""
+    return ret
+
+
+readme = _read_home_file("README.md")
+
 
 try:
     __version__ = get_distribution("tisdb").py_version
@@ -20,7 +27,7 @@ except DistributionNotFound:
     with io.open("src/tisdb/__init__.py", "rt", encoding="utf-8") as f:
         __version__ = re.search(r"__version__ = \"(.*?)\"", f.read()).group(1)
 
-reqs = ["porm>=0.0.28a0", "sortedcontainers>=2.3.0"]
+reqs = _read_home_file("requirements.txt").splitlines()
 
 setup(
     name="tisdb",

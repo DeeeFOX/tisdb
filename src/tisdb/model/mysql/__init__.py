@@ -5,7 +5,6 @@ from porm.types.core import (
     DatetimeType,
     FloatType,
     IntegerType,
-    TimestampType,
     VarcharType,
 )
 import pymysql
@@ -52,3 +51,29 @@ class Tkv(TsdbModel):
 class TkvUkRel(TsdbModel):
     tkv_pk = IntegerType(pk=True, required=False)
     taguk = VarcharType(required=True)
+
+
+class Metric(TsdbModel):
+    bid = VarcharType(required=False)
+    metric = VarcharType(required=True)
+    taguk = VarcharType(required=True)
+    ts = DatetimeType(required=True)
+    createtime = DatetimeType(required=False)
+    updatetime = DatetimeType(required=False)
+    fieldk = VarcharType(required=True)
+    fieldv = VarcharType(required=True)
+
+
+class Tag(TsdbModel):
+    tagid = VarcharType(require=True)
+    tagk = VarcharType(required=True)
+    tagv = VarcharType(required=True)
+    createtime = DatetimeType(required=True)
+    updatetime = DatetimeType(required=True)
+
+
+class Tag_Rel(TsdbModel):
+    tagid = VarcharType(require=True)
+    taguk = VarcharType(required=True)
+    createtime = DatetimeType(required=True)
+    updatetime = DatetimeType(required=True)
