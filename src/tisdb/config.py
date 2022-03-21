@@ -28,13 +28,14 @@ class TsdbConfig(SortedDict):
         charset: str = "utf8",
         autocommit: int = 0,
         cursorclass=DictCursor,
+        database: str = None
     ):
         super().__init__(
             host=host,
             user=user,
             password=password,
             port=port,
-            db=db,
+            db=db or database,
             charset=charset,
             autocommit=autocommit,
             cursorclass=cursorclass,
@@ -43,7 +44,7 @@ class TsdbConfig(SortedDict):
         self.port = port
         self.user = user
         self.password = password
-        self.db = db
+        self.db = db or database
 
     def copy(self) -> TsdbConfig:
         tmp = SortedDict()

@@ -39,7 +39,7 @@ class MetricdbClient(TsdbClient):
         return pd.read_sql(sql=sql, params=param, con=mydb.connection())
 
     def dfpmetrics(self, df: DataFrame) -> List[MetricdbData]:
-        return [MetricdbData.from_df_dict(_d) for _d in df.to_dict()]
+        return [MetricdbData.from_dict(_d) for _d in df.to_dict()]
 
     def metrics2icuser(self, metrics: List[MetricdbData]) -> List[Dict]:
         rets = defaultdict(list)
