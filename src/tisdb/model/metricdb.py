@@ -32,7 +32,7 @@ class TimeWindow(object):
         self._unit = Unit[self._unit.upper()]
 
     def __str__(self) -> str:
-        return f'{self._unit}_{self._tw}'.upper()
+        return f'{self._unit.value}_{self._tw}'.upper()
 
 
 class MetricdbData(TsdbData):

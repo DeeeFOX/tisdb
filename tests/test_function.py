@@ -5,6 +5,7 @@ from tisdb.model import TsdbData, TsdbTags
 from hashlib import md5
 import simplejson as json
 import datetime
+from tisdb.model.metricdb import TimeWindow
 
 from tisdb.types import OpType
 
@@ -131,6 +132,7 @@ class MetricdbTest(MetricdbTestCase):
             json.dumps(res.data[0], default=datetime.datetime.isoformat),
             json.dumps({"field": {"count": "2", "value": "1"}, "metric": "zzf_test", "tag": {}, "ts": "2021-04-01T01:01:01", "tw": None}))
 
+        self.assertEqual(str(TimeWindow('DAY_1')), 'DAY_1')
         # def test_03_create_and_save(self):
     #     sql_str = """
     #     SELECT 'zzf_test2' as metric, DATE(ts) as ts, 'zzf2' as tag_ggid, 'zzf2' as tag_ch, count(1) as value
