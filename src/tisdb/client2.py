@@ -1,9 +1,8 @@
 # -*- coding: utf-8
 
 from __future__ import annotations
-from ast import List
 from collections import defaultdict
-from typing import Dict
+from typing import Dict, List
 from tisdb.api import MetricdbApi
 from tisdb.client import TsdbClient
 import pandas as pd
@@ -45,7 +44,10 @@ class MetricdbClient(TsdbClient):
         rets = defaultdict(list)
         for _m in metrics:
             rows = rets[json.dumps(_m.get_data_key())]
-            rows.append(_m.get_data_value())
+            _v = _m.get_data_value()
+            _v['tags'] = _v.pop('tag')
+            _v['fields'] = _v.pop('field')
+            rows.append(_v)
         ret = []
         for _k, _v in rets.items():
             _r = json.loads(_k)
