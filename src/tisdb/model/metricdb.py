@@ -78,14 +78,14 @@ class MetricdbData(TsdbData):
             if col == 'metric':
                 _metric = val
             elif col.startswith('tag'):
-                _k, _v = col.lower().split('_')
+                _k, _v = col.lower().split('_', 1)
                 if _k == 'tw':
                     _tw = TimeWindow(_v)
                 tags[_k] = _v
             elif col == 'value':
                 fields[col] = val
             elif col.startswith('fieldvalue'):
-                fields[col.split('_')[1]] = val
+                fields[col.split('_', 1)[1]] = val
             elif col == 'ts':
                 _ts = dtparser.parse(val)
             else:

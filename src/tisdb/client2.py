@@ -39,12 +39,12 @@ class MetricdbClient(TsdbClient):
         return pd.read_sql(sql=sql, params=param, con=mydb.connection())
 
     def dfpmetrics(self, df: DataFrame) -> List[MetricdbData]:
-        return [MetricdbData.from_dict(_d) for _d in df.to_dict()]
+        return [MetricdbData.from_dict(_d) for _d in df.to_dict('records')]
 
     def metrics2icuser(self, metrics: List[MetricdbData]) -> List[Dict]:
         rets = defaultdict(list)
         for _m in metrics:
-            rows = rets.get(json.dumps(_m.get_data_key()))
+            rows = rets[json.dumps(_m.get_data_key())]
             rows.append(_m.get_data_value())
         ret = []
         for _k, _v in rets.items():
