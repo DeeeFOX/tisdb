@@ -37,7 +37,7 @@ class MetricdbClient(TsdbClient):
             DataFrame: result in DataFrame Object
         """
         if (conn_conf is None):
-            return pd.read_sql(sql=sql, params=param, con=self.mydb.connection)
+            return pd.read_sql(sql=sql, params=param, con=self.mydb.connection())
         else:
             mydb = self._create_mydb(conn_conf=conn_conf)
             return pd.read_sql(sql=sql, params=param, con=mydb.connection())
