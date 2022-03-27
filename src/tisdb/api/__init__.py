@@ -66,7 +66,8 @@ class TsdbApi(object):
 
     def _insert_tsdbdata(self, mtsv: Mtsv, tags: TsdbTags, _t: _transaction) -> int:
         rels = []
-        inserts = [Tkv.new(tagk=tagk, tagv=tagv) for tagk, tagv in tags.items()]
+        inserts = [Tkv.new(tagk=tagk, tagv=tagv)
+                   for tagk, tagv in tags.items()]
         Tkv.insert_many(inserts, t=_t, ignore=True)
         for tagk, tagv in tags.items():
             tkv = Tkv.get_one(t=_t, tagk=tagk, tagv=tagv)
@@ -216,7 +217,7 @@ class MetricdbApi(TsdbApi):
     def activate(self):
         value = MetricdbData(
             metric="tisdb_test", tags=TsdbTags(env="test"), fields=TsdbFields(
-            value=311), tw=TimeWindow('DAY_1'), ts=dt.now())
+                value=311), tw=TimeWindow('DAY_1'), ts=dt.now())
         try:
             if self._store_type in (StoreType.PORM, StoreType.MYSQL, StoreType.TIDB):
                 return self._test_insert_mydb(value)
@@ -280,7 +281,8 @@ class MetricdbApi(TsdbApi):
                 metricmap[_v.tags_uuid]["delete_terms"]["ts"][0].add(_v.ts)
             metricmaps[_v.metric] = metricmap
         rets = {}
-        _metric_obj = list(list(metricmaps.values())[0].values())[0]["metric"][0][0]
+        _metric_obj = list(list(metricmaps.values())[0].values())[
+            0]["metric"][0][0]
         with _metric_obj.start_transaction() as _t:
             for metricmap in metricmaps.values():
                 for tags_uuid, mtsvtagkv in metricmap.items():
@@ -296,7 +298,7 @@ class MetricdbApi(TsdbApi):
                             _f = TsdbFields()
                             _f[_m.fieldk] = _m.fieldv
                             ret = MetricdbData(metric=_m.metric, ts=_m.ts,
-                                         fields=_f, bid=_m.bid)
+                                               fields=_f, bid=_m.bid)
                             rets[_m.bid] = ret
         return list(rets.values())
 

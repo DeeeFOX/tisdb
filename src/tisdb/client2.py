@@ -17,9 +17,11 @@ from dateutil import parser as dt_parser
 
 class MetricdbClient(TsdbClient):
     def __init__(self, store_type: StoreType = StoreType.PORM, conn_conf: TsdbConfig = TsdbConfig()):
+        super().__init__(store_type=store_type, conn_conf=conn_conf)
         self.store_type = store_type
         self.config = conn_conf
         self.api = MetricdbApi(self.store_type, self.config)
+        self.mydb = self._create_mydb(conn_conf=self.config)
 
     def create_metricdf_mydb(
         self, sql: str, param: dict = None, conn_conf: dict = None
@@ -34,8 +36,11 @@ class MetricdbClient(TsdbClient):
         Returns:
             DataFrame: result in DataFrame Object
         """
-        mydb = self._create_mydb(conn_conf=conn_conf)
-        return pd.read_sql(sql=sql, params=param, con=mydb.connection())
+        if (conn_conf is None):
+            return pd.read_sql(sql=sql, params=param, con=self.mydb.connection)
+        else:
+            mydb = self._create_mydb(conn_conf=conn_conf)
+            return pd.read_sql(sql=sql, params=param, con=mydb.connection())
 
     def dfpmetrics(self, df: DataFrame) -> List[MetricdbData]:
         return [MetricdbData.from_dict(_d) for _d in df.to_dict('records')]
